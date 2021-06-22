@@ -1,0 +1,62 @@
+[
+    {
+      "_id": "5fdb7fb41b09254e8ac7f602",
+      "username": "Delores@chat.app",
+      "password": 12345,
+      "age": 54,
+      "state": "offline",
+      "firstname": "Sykes",
+      "lastname": "Woodard",
+      "gender": "male"
+    },
+    {
+      "_id": "5fdb7fb4baab223ef4456be4",
+      "username": "Amalia@chat.app",
+      "password": 12345,
+      "age": 46,
+      "state": "offline",
+      "firstname": "Crawford",
+      "lastname": "Gilmore",
+      "gender": "male"
+    },
+    {
+      "_id": "5fdb7fb4c65c3ed236b99d4d",
+      "username": "Haley@chat.app",
+      "password": 12345,
+      "age": 43,
+      "state": "online",
+      "firstname": "Cheri",
+      "lastname": "Morris",
+      "gender": "female"
+    },
+    {
+      "_id": "5fdb7fb49d6192607820f0b2",
+      "username": "Ferrell@chat.app",
+      "password": 12345,
+      "age": 48,
+      "state": "offline",
+      "firstname": "Ramona",
+      "lastname": "Lynch",
+      "gender": "female"
+    },
+    {
+      "_id": "5fdb7fb4df49fc1ac5e28347",
+      "username": "Priscilla@chat.app",
+      "password": 12345,
+      "age": 49,
+      "state": "online",
+      "firstname": "Knight",
+      "lastname": "Conway",
+      "gender": "male"
+    },
+    {
+      "_id": "5fdb7fb48891f12bd44a89ee",
+      "username": "Lula@chat.app",
+      "password": 12345,
+      "age": 42,
+      "state": "online",
+      "firstname": "Kay",
+      "lastname": "Whitley",
+      "gender": "female"
+    }
+  ]

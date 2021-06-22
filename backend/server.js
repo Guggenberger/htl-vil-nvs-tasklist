@@ -1,24 +1,58 @@
 /* ************************************************************************* */
-/*                                Task  list                                 */
+/*                                Chat App                                   */
 /*                                                                           */
 /*  Complete Web App                                                         */
 /*                                                                           */
-/*  Mathias Guggenberger                                                     */
+/*  Achim Karasek                                                            */
 /*  HTL Villach - Abteilung Informatik                                       */
 /*  (c) 2020/21                                                              */
 /* ********************'**************************************************** */
 
-const hostname = 'localhost';
-const port = 2604;
-const express = require("express");
+'use strict';
+import express from 'express';
+import dotenv from 'dotenv';
+import { convertToBoolean } from './utils/convert.js';
+import { log } from './logging/app-logger.js';
+import { connectDB } from './dal/db-connector.js';
+import { configure, configureInErrorMode } from './app/app-loader.js';
+
 const app = express();
+dotenv.config();
 
-app.use(express.json());
+const hostname = process.env.HOST;
+const port = process.env.PORT;
+const mongoConnectionString = process.env.MONGO_CONNECTION_STRING;
+const dbConnectTimeout = process.env.DB_CONNECT_TIMEOUT;
+const runWithoutAuth = process.env.RUN_WITHOUT_AUTH;
 
-app.get('/helloExpress', (req, res) => {
-    res.status(200).send('this is express - up and running');
-});
+const main = async () => {
+  let recreateDatabase = convertToBoolean(process.env.RECREATE_DATABASE);
 
-app.listen(port, hostname, () => {
-    console.info(`Chat Web Application is up and running on ${hostname}:${port}.`);
-})
+  try {
+    log.info(`server started. trying to connect to database ...`);
+
+    await connectDB(mongoConnectionString, dbConnectTimeout, recreateDatabase);
+    if (recreateDatabase) {
+      log.warning('Current Database dropped');
+    }
+    log.success(`DBConnect to ${mongoConnectionString} successful`);
+
+    configure(app, runWithoutAuth);
+    log.info(`Chat Web Application successfully configured`);
+  } catch (err) {
+    configureInErrorMode(app);
+    log.error(
+      `Chat Web Application running in error-mode.\n` +
+        `There were startup-problems. App is not healthy!\n` +
+        err,
+    );
+  }
+
+  app.listen(port, hostname, () => {
+    log.success(`Web Server up and running at: ${hostname}:${port}.`);
+  });
+};
+
+main();
+
+export default app;

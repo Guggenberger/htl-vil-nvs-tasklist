@@ -1,1 +1,4 @@
 /node_modules
+/logdata
+data/*.*
+!data/.gitkeep

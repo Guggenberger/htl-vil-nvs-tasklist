@@ -1,0 +1,65 @@
+#tasklist_background{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #5870D1;
+}
+
+#tasklist_abmelden{
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    text-align: right;
+    margin-left: -20px;
+}
+
+#tasklist_abmelden:hover {
+    color: #dedcd7;
+}
+
+#tasklist_table{
+
+}
+
+#table_th{
+    color: #F3B404;
+    font-size: 40px;
+    width: 200px;
+    border-right: 2px solid lightblue;
+    border-bottom: 2px solid lightblue;
+}
+
+#table_th_name {
+    color: #F3B404;
+    font-size: 40px;
+    width: 400px;
+    border-bottom: 2px solid lightblue;
+    border-right: 2px solid lightblue;
+}
+
+#table_td_name{
+    color: #F3B404;
+    font-size: 30px;
+    width: 400px;
+    font-weight: bold;
+    border-right: 2px solid lightblue;
+    border-bottom: 2px solid lightblue;
+}
+
+#table_td{
+    position: relative;
+    border-right: 2px solid lightblue;
+    border-bottom: 2px solid lightblue;
+}
+
+#table_td_text{
+    color: #F3B404;
+    font-size: 30px;
+    position: relative;
+    left: 50%;
+    margin-left: -50px;
+    text-align: center;
+    border: 2px solid black;
+    width: 100px;
+    background-color: white;
+}

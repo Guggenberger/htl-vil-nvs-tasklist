@@ -7,6 +7,20 @@
   pointer-events: none;
 }
 
+#home_headline{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.sortable-column-label {
+  float: left;
+}
+
+.sortable-column-symbol {
+  float: right;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

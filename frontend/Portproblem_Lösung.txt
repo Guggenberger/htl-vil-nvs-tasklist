@@ -1,0 +1,7 @@
+#Verwende die Admin Konsole
+
+#Um den PortID (PID) zu finden
+netstat -ano | findstr :80
+
+#Um den Task mit der gefundenen PID zu killen
+taskkill /PID 4420 /F

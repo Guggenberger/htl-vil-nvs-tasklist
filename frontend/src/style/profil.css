@@ -1,0 +1,29 @@
+.profil_text{
+    display: inline;
+    position: relative;
+    background-color: red;
+    font-size: 30px;
+    border: 2px solid gray;
+    width: 80%;
+    height: 50px;
+    margin-left: 10%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#profil_databox{
+    display: inline-block;
+    width: 80%;
+    height: 100vh;
+    margin-left: 10%;
+    background-color: green;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile_text{
+    font-size: 30px; 
+    text-align: center;
+}

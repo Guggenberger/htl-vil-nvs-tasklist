@@ -1,0 +1,2884 @@
+{
+	"info": {
+		"_postman_id": "c5c1453d-29fd-48d5-a1e0-d5c4abea24fb",
+		"name": "NVS 2020",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01-middleware-tests",
+			"item": [
+				{
+					"name": "First Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/helloExpress",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"helloExpress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "No Authorization Header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/helloExpress",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"helloExpress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authorization Header not valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "test123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/helloExpress",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"helloExpress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate with wrong credentials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{\"username\":\"Test\",\"password\":\"123\"}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/helloExpress",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"helloExpress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate PLATON",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/helloExpress",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"helloExpress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate KANT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{\"username\":\"kant\",\"password\":\"aufklaerung\"}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/helloExpress",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"helloExpress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication fail for KANT - other route",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{ \"username\": \"kan\", \"password\": \"aufklaerung\" }",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/whoiam",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"whoiam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication ok for KANT - other route",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{ \"username\": \"kant\", \"password\": \"aufklaerung\" }",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/whoiam",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"whoiam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication fail - number of props of cred-object not correct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{ \"username\": \"kant\", \"password\": \"aufklaerung\",\"next\": \"prop\" }",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/helloExpress",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"helloExpress"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication fail - number of props correct but wrong props",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{ \"hallo\": \"kant\", \"password\": \"aufklaerung\" }",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/helloExpress",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"helloExpress"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "02-lastChars",
+			"item": [
+				{
+					"name": "02-lastChars-SYNC",
+					"item": [
+						{
+							"name": "lastChars Mini - 3 Chars - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"123\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-sync?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-sync"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars Mini - No Authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function() {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Correct response\", function() {\r",
+											"    pm.response.to.have.body(\"Access denied - No auth header set!\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{lastcharactersURL}}-sync?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-sync"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars 4MB - 2 Chars - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"ar\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-sync?path={{dataTestPath}}/Testfile004MB.txt&numberOfChars=2",
+									"host": [
+										"{{lastcharactersURL}}-sync"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/Testfile004MB.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - File empty",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - File is empty\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-sync?path={{dataTestPath}}/Testfile000MB.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-sync"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/Testfile000MB.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - File not found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Error - File not found\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-sync?path={{dataTestPath}}/TestFileMini2.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-sync"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini2.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - No Arguments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-sync",
+									"host": [
+										"{{lastcharactersURL}}-sync"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "./data/TestFileMini2.txt",
+											"disabled": true
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Only one Argument",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-sync?path={{dataTestPath}}/TestFileMini2.txt",
+									"host": [
+										"{{lastcharactersURL}}-sync"
+									],
+									"query": [
+										{
+											"key": "numberOfChars",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini2.txt"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Too many arguments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Too many keys\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-sync?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3, 5",
+									"host": [
+										"{{lastcharactersURL}}-sync"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3, 5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Wrong argument type",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-sync?Chars={{dataTestPath}}/TestFile.txt&numberOfPaths=3",
+									"host": [
+										"{{lastcharactersURL}}-sync"
+									],
+									"query": [
+										{
+											"key": "Chars",
+											"value": "{{dataTestPath}}/TestFile.txt"
+										},
+										{
+											"key": "numberOfPaths",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars Mini - 3 Chars - Too many chars typed",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"123\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-sync?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=6",
+									"host": [
+										"{{lastcharactersURL}}-sync"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "02-lastChars-CBF",
+					"item": [
+						{
+							"name": "lastChars Mini - 3 Chars - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"123\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-cbf?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-cbf"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars Mini - No Authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function() {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Correct response\", function() {\r",
+											"    pm.response.to.have.body(\"Access denied - No auth header set!\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{lastcharactersURL}}-cbf?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-cbf"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars 4MB - 2 Chars - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"ar\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-cbf?path={{dataTestPath}}/Testfile004MB.txt&numberOfChars=2",
+									"host": [
+										"{{lastcharactersURL}}-cbf"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/Testfile004MB.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - File empty",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - File is empty\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-cbf?path={{dataTestPath}}/Testfile000MB.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-cbf"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/Testfile000MB.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - File not found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Error - File not found\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-cbf?path={{dataTestPath}}/TestFileMini2.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-cbf"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini2.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - No Arguments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-cbf",
+									"host": [
+										"{{lastcharactersURL}}-cbf"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "./data/TestFileMini2.txt",
+											"disabled": true
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Only one Argument",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-cbf?path={{dataTestPath}}/TestFileMini2.txt",
+									"host": [
+										"{{lastcharactersURL}}-cbf"
+									],
+									"query": [
+										{
+											"key": "numberOfChars",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini2.txt"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Too many arguments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Too many keys\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-cbf?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3, 5",
+									"host": [
+										"{{lastcharactersURL}}-cbf"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3, 5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Wrong argument type",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-cbf?Chars={{dataTestPath}}/TestFile.txt&numberOfPaths=3",
+									"host": [
+										"{{lastcharactersURL}}-cbf"
+									],
+									"query": [
+										{
+											"key": "Chars",
+											"value": "{{dataTestPath}}/TestFile.txt"
+										},
+										{
+											"key": "numberOfPaths",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars Mini - 3 Chars - Too many chars typed",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"123\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-cbf?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=6",
+									"host": [
+										"{{lastcharactersURL}}-cbf"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "02-lastChars-Promise",
+					"item": [
+						{
+							"name": "lastChars Mini - 3 Chars - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"123\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-promise?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-promise"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars Mini - No Authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function() {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Correct response\", function() {\r",
+											"    pm.response.to.have.body(\"Access denied - No auth header set!\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{lastcharactersURL}}-promise?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-promise"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars 4MB - 2 Chars - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"ar\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-promise?path={{dataTestPath}}/Testfile004MB.txt&numberOfChars=2",
+									"host": [
+										"{{lastcharactersURL}}-promise"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/Testfile004MB.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - File empty",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - File is empty\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-promise?path={{dataTestPath}}/Testfile000MB.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-promise"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/Testfile000MB.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - File not found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Error - File not found\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-promise?path={{dataTestPath}}/TestFileMini2.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-promise"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini2.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - No Arguments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-promise",
+									"host": [
+										"{{lastcharactersURL}}-promise"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "./data/TestFileMini2.txt",
+											"disabled": true
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Only one Argument",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-promise?path={{dataTestPath}}/TestFileMini2.txt",
+									"host": [
+										"{{lastcharactersURL}}-promise"
+									],
+									"query": [
+										{
+											"key": "numberOfChars",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini2.txt"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Too many arguments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Too many keys\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-promise?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3, 5",
+									"host": [
+										"{{lastcharactersURL}}-promise"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3, 5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Wrong argument type",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-promise?Chars={{dataTestPath}}/TestFile.txt&numberOfPaths=3",
+									"host": [
+										"{{lastcharactersURL}}-promise"
+									],
+									"query": [
+										{
+											"key": "Chars",
+											"value": "{{dataTestPath}}/TestFile.txt"
+										},
+										{
+											"key": "numberOfPaths",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars Mini - 3 Chars - Too many chars typed",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"123\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-promise?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=6",
+									"host": [
+										"{{lastcharactersURL}}-promise"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "02-lastChars-Await",
+					"item": [
+						{
+							"name": "lastChars Mini - 3 Chars - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"123\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-await?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-await"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars Mini - No Authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function() {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Correct response\", function() {\r",
+											"    pm.response.to.have.body(\"Access denied - No auth header set!\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{lastcharactersURL}}-await?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-await"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars 4MB - 2 Chars - Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"ar\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-await?path={{dataTestPath}}/Testfile004MB.txt&numberOfChars=2",
+									"host": [
+										"{{lastcharactersURL}}-await"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/Testfile004MB.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - File empty",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - File is empty\");\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-await?path={{dataTestPath}}/Testfile000MB.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-await"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/Testfile000MB.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - File not found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function() {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Error - File not found\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-await?path={{dataTestPath}}/TestFileMini2.txt&numberOfChars=3",
+									"host": [
+										"{{lastcharactersURL}}-await"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini2.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - No Arguments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-await",
+									"host": [
+										"{{lastcharactersURL}}-await"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "./data/TestFileMini2.txt",
+											"disabled": true
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Only one Argument",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-await?path={{dataTestPath}}/TestFileMini2.txt",
+									"host": [
+										"{{lastcharactersURL}}-await"
+									],
+									"query": [
+										{
+											"key": "numberOfChars",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini2.txt"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Too many arguments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Too many keys\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-await?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=3, 5",
+									"host": [
+										"{{lastcharactersURL}}-await"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "3, 5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars - Wrong Query String - Wrong argument type",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function() {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function() {\r",
+											"    pm.response.to.have.body(\"Bad request - Query string not given or wrong!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-await?Chars={{dataTestPath}}/TestFile.txt&numberOfPaths=3",
+									"host": [
+										"{{lastcharactersURL}}-await"
+									],
+									"query": [
+										{
+											"key": "Chars",
+											"value": "{{dataTestPath}}/TestFile.txt"
+										},
+										{
+											"key": "numberOfPaths",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lastChars Mini - 3 Chars - Too many chars typed",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function() {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Number of properties\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an(\"object\");\r",
+											"    pm.expect(Object.keys(responseData).length).to.eql(7);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Structure\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.startReading).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationReading).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.startExtracting).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationExtracting).to.be.a(\"number\");\r",
+											"    pm.expect(responseData.endProcessing).to.be.a(\"string\");\r",
+											"    pm.expect(responseData.durationComplete).to.be.a(\"number\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response Data - Correct Values\", function() {\r",
+											"    let responseData = pm.response.json();\r",
+											"    pm.expect(responseData.lastchars).to.be.eql(\"123\");\r",
+											"\r",
+											"    pm.expect(responseData.durationReading).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationExtracting).to.be.above(-1);\r",
+											"    pm.expect(responseData.durationComplete).to.be.eql(responseData.durationReading+responseData.durationExtracting);\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{lastcharactersURL}}-await?path={{dataTestPath}}/TestFileMini.txt&numberOfChars=6",
+									"host": [
+										"{{lastcharactersURL}}-await"
+									],
+									"query": [
+										{
+											"key": "path",
+											"value": "{{dataTestPath}}/TestFileMini.txt"
+										},
+										{
+											"key": "numberOfChars",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "03-csv-body-parser",
+			"item": [
+				{
+					"name": "CSVSuccessCase-01",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/csv",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Nachname;Vorname;SUCCESS;FAIL\r\nMischk;David;16;10\r\nReder;Hugo;1;25\r\nAbel;Marcel;14;12\r\nWettstein;Stefan;13;13"
+						},
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/csv-test",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"csv-test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FlexibleCSV-Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/csv",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "AccountId;FirstName;Lastname;Grad;\r\n13;Sepp;Egal;4;\r\n16;Susi;Sorglos;2;"
+						},
+						"url": {
+							"raw": "http://chatservice.informatik.htl-vil:2604/testcsvparser?recordnr=2&propertyvalue=Grade",
+							"protocol": "http",
+							"host": [
+								"chatservice",
+								"informatik",
+								"htl-vil"
+							],
+							"port": "2604",
+							"path": [
+								"testcsvparser"
+							],
+							"query": [
+								{
+									"key": "recordnr",
+									"value": "2"
+								},
+								{
+									"key": "propertyvalue",
+									"value": "Grade"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "04-users",
+			"item": [
+				{
+					"name": "http://chatservice.informatik.htl-vil:2604/api/users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{backend}}{{usersEndpoint}}",
+							"host": [
+								"{{backend}}{{usersEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://chatservice.informatik.htl-vil:2604/api/users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{backend}}{{usersEndpoint}}",
+							"host": [
+								"{{backend}}{{usersEndpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://chatservice.informatik.htl-vil:2604/api/users/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{backend}}{{usersEndpoint}}/5fd325ae06b8bfaf50d1c8aa",
+							"host": [
+								"{{backend}}{{usersEndpoint}}"
+							],
+							"path": [
+								"5fd325ae06b8bfaf50d1c8aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://chatservice.informatik.htl-vil:2604/api/users/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{backend}}{{usersEndpoint}}/5fd325ae06b8bfaf50d1c8aa",
+							"host": [
+								"{{backend}}{{usersEndpoint}}"
+							],
+							"path": [
+								"5fd325ae06b8bfaf50d1c8aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://chatservice.informatik.htl-vil:2604/api/users/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{\"username\":\"platon\",\"password\":\"idee\"}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{backend}}{{usersEndpoint}}/5fd325ae06b8bfaf50d1c8aa",
+							"host": [
+								"{{backend}}{{usersEndpoint}}"
+							],
+							"path": [
+								"5fd325ae06b8bfaf50d1c8aa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "lastcharactersURL",
+			"value": "chatservice.informatik.htl-vil:2604/lastcharacters"
+		},
+		{
+			"key": "dataTestPath",
+			"value": "C:/NVS4TestData/lastchars/"
+		},
+		{
+			"key": "backend",
+			"value": "chatservice.informatik.htl-vil:2604"
+		},
+		{
+			"key": "usersEndpoint",
+			"value": "/api/v1/users/"
+		}
+	]
+}
