@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Login from './components/Login';
 import Logout from './components/Logout';

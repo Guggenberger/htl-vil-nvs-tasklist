@@ -12,6 +12,10 @@ const NavBar = (props) => {
         variant= "light";
     }
 
+    const test = () => {
+        alert("click");
+    }
+
     return (
         <Navbar collapseOnSelect expand="lg" bg={bg} variant={variant}>
             <Navbar.Brand>

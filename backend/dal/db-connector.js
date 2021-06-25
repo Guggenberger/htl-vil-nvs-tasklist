@@ -1,8 +1,10 @@
 import mongoose   from 'mongoose';
 import User       from '../users/user-model.js';
+import Action     from '../action/action-model.js';
 
 const initAllModels = async () => {
   await User.init();
+  await Action.init();
 };
 
 export const connectDB = async (

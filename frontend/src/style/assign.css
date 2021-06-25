@@ -1,0 +1,61 @@
+#assing_userlist{
+    text-align: center;
+    font-size: 30px;
+    width: 300px;
+    position: relative;
+    left: 50%;
+    margin-left: -150px;
+    top: 50px;
+
+    border: 2px solid black;
+}
+
+#assign_datepicker{
+    text-align: center;
+    font-size: 30px;
+    width: 500px;
+    position: relative;
+    left: 50%;
+    margin-left: -390px;
+    top: 150px;
+    
+    border: 2px solid black;
+}
+
+#assing_action{
+    text-align: center;
+    font-size: 30px;
+    width: 300px;
+    position: relative;
+    left: 50%;
+    margin-left: -410px;
+    top: 250px;
+    
+    border: 2px solid black;
+}
+
+#assign_notes{
+    text-align: center;
+    font-size: 30px;
+    width: 600px;
+    position: relative;
+    left: 50%;
+    margin-left: -450px;
+    top: 350px;
+    
+    border: 2px solid black;
+}
+
+#assign_submit{
+    text-align: center;
+    font-size: 30px;
+    width: 400px;
+    position: relative;
+    left: 50%;
+    margin-left: -500px;
+    top: 500px;
+    
+    border: 2px solid black;
+    color: black;
+    background-color: grey;
+}

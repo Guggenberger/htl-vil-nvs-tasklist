@@ -10,6 +10,7 @@ import { readLastCharCBF }      from '../lastcharacters/lastcharacters-cbf.js';
 import { readLastCharPromise }  from '../lastcharacters/lastcharacters-promise.js';
 import { readLastCharAwait }    from '../lastcharacters/lastcharacters-await.js';
 import { userRouter }           from '../users/user-router.js';
+import { actionRouter }         from '../action/action-router.js';
 import { csv }                  from '../middleware/csv-body-parser.js';
 import { loginRouter }          from '../login/login-router.js';
 import {convertToBoolean}       from '../utils/convert.js';
@@ -41,17 +42,8 @@ export const configure = async (app) => {
   app.use(cors());
   app.use('/api/v1/auth', loginRouter);
   app.use('/api/v1/users', userRouter);
+  app.use('/api/v1/action', actionRouter);
 
-
-  app.get('/helloExpress', helloWorld);
-  app.get('/helloWorld', helloWorld);
-  app.get('/whoiam', whoiam);
-  app.get('/lastcharacters', readLastCharSync);
-
-  app.get('/lastcharacters-await', readLastCharAwait);
-  app.get('/lastcharacters-cbf', readLastCharCBF);
-  app.get('/lastcharacters-promise', readLastCharPromise);
-  app.get('/lastcharacters-sync', readLastCharSync);
 
   app.get('/', (req, res) => {
     res.status(200).send("this is the main page - up ang running");

@@ -2,7 +2,7 @@ const baseUrl = process.env.REACT_APP_FRONTEND_URL;
 
 export function cors() {
     return(req, res, next) => {
-        res.setHeader('Access-Control-Allow-Origin', "*");
+        res.setHeader('Access-Control-Allow-Origin', "http://projektautark-client.htl-vil");
         res.setHeader('Access-Control-Allow-Credentials', true);
         res.setHeader('Access-Control-Allow-Headers', "*");
 

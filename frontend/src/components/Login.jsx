@@ -14,8 +14,8 @@ export default function Login() {
     }
 
     useEffect(()=>{
-        document.getElementById("login_username").value = "Debbie@chat.app";
-        document.getElementById("login_password").value = "12345";
+        document.getElementById("login_username").value = "Admin@chat.app";
+        document.getElementById("login_password").value = "admin";
     },[])
 
     const submit_click = () => {

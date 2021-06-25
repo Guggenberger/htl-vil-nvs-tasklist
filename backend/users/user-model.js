@@ -5,6 +5,9 @@ const allowedMinAge = 12;
 const allowedMaxAge = 120;
 
 const userSchema = new Schema({
+  _id: {
+    type: String,
+  },
   username: {
     type: String,
     unique: true,
