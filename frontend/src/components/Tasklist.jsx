@@ -33,12 +33,7 @@ export default function Tasklist() {
     var date6 = new Date();
         date6.setDate(date5.getDate() + 1);
     var date7 = new Date();
-        date7.setDate(date6.getDate() + 1);
-
-    var tasks = [
-        {name: "Mathias Guggenberger", activity: { montag: "FB", dienstag: "FB", mittwoch: "FB", donnerstag: "FB", freitag: "FB", samstag: "FB", sonntag: "FB", }},
-        {name: "Peter Himelheimer", activity: { montag: "FB", dienstag: "FB", mittwoch: "FB", donnerstag: "FB", freitag: "FB", samstag: "FB", sonntag: "FB", }},
-    ]
+        date7.setDate(date6.getDate() + 1);    
 
     //day 0 bis 6
     const getAction = (user, day, id) => {
@@ -85,12 +80,20 @@ export default function Tasklist() {
         });
     }
 
+    const back = () => {
+
+    }
+
+    const next = () => {
+
+    }
+
     return (
         <div id="tasklist_background">
              <table id="tasklist_table">
                 <thead>
                     <tr>
-                        <th id="table_th_name"></th>
+                        <th id="table_th_name"><p id="table_th_back" onClick={back}>BACK</p><p id="table_th_next" onClick={next}>NEXT</p></th>
                         <th id="table_th">{date.getDate() + "." + date.getMonth() + "." + date.getFullYear()}</th>
                         <th id="table_th">{date2.getDate() + "." + date2.getMonth() + "." + date2.getFullYear()}</th>
                         <th id="table_th">{date3.getDate() + "." + date3.getMonth() + "." + date3.getFullYear()}</th>

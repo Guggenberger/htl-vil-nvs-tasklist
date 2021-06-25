@@ -112,3 +112,26 @@
     border: 2px solid black;
     width: 100px;
 }
+
+#table_th_back{
+    font-size: 30px;
+    width: 150px;
+    float: left;
+    text-align: left;
+    color: black
+}
+
+#table_th_next{
+    font-size: 30px;
+    width: 150px;
+    float: left; 
+    text-align: right;
+    color: black
+}
+
+#table_th_next:hover{
+    color: grey;
+}
+#table_th_back:hover{
+    color: grey;
+}

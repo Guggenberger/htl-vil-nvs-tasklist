@@ -12,6 +12,7 @@ import Form from './components/Form.jsx';
 import Assign from './components/Assign.jsx';
 
 function App() {
+  window.localStorage.setItem("plusDays", null);
   let navItems = [     
     { title:'Login',  	    to:'/login',      component:Login,      auth: false,  admin: false },
     { title:'Tasklist',     to:'/tasklist',   component:Tasklist,   auth: true,   admin: false },
